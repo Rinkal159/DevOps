@@ -32,9 +32,34 @@
 
 ? ----------------------------------------------------------------------------------------------------------
 
+^ 3. Branch :
+^ ___________
+
+→ git branch :
+    shows all branches
+
+→ git branch -m <new_branch_name> : 
+    to rename a branch
+
+→ git checkout -b <branch_name> : 
+    to create and switch to that new branch
+
+→ git checkout <branch_name> : 
+    to switch branch
+
+→ git branch -d <branch_name> : 
+    to delete a branch
+
+? ----------------------------------------------------------------------------------------------------------
+
 ^ 3. Interesting Commands : 
 ^ _________________________
 
-→ Commad : git log - to see all previous commits
+→ git log : to see all previous commits
 
----------------------------------------------------------------------------------------------------------
+? ----------------------------------------------------------------------------------------------------------
+
+^ 4. Interesting Facts :
+^ ______________________
+
+→ In 'git remote add origin <repo_link>', origin is the alias of that repo link so that every time we push, we don't want to copy-paste that repo link. So, in 'git push -u origin main', origin is that repo_link where we push the code.
