@@ -2,5 +2,28 @@
 *** ------------
 
 ^ 1. Configure
+^ _____________
+
 → git config --global user.name '<name>'
 → git config --global user.email '<email>'
+
+^ 2. Export files on github.
+^ __________________________
+    
+    ^ i) LOCAL (vs code) to REMOTE (github)
+    - Create a directory on local setup. (mkdir <dirname>)
+    - Create a file in that directory. (touch <filename>)
+    - Add few lines.
+    - Command : git init
+    - Create a Repo on Github
+    - Command : git remote add origin <that_repo_link>
+    - Command : git branch -M 'main'
+    - Command : git push -u origin main
+
+    ^ ii) REMOTE (github) to LOCAL (vs code)
+    - Create a repo.
+    - Command : git clone <that_repo_link>
+    - Make few changes.
+    - Command : git add <filename>
+    - Command : git commit -m "<commit_msg>"
+    - Command : git push -u origin main
