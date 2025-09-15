@@ -1,16 +1,18 @@
 *** GIT in-depth
 *** ------------
 
-^ 1. Configure
-^ _____________
+^ 1. Configure :
+^ ______________
 
 → git config --global user.name '<name>'
 → git config --global user.email '<email>'
 
-^ 2. Export files on github.
-^ __________________________
+? -----------------------------------------------------------------------------------------------------------
+
+^ 2. Export files on github :
+^ ___________________________
     
-    ^ i) LOCAL (vs code) to REMOTE (github)
+    & i) LOCAL (vs code) to REMOTE (github)
     - Create a directory on local setup. (mkdir <dirname>)
     - Create a file in that directory. (touch <filename>)
     - Add few lines.
@@ -20,10 +22,19 @@
     - Command : git branch -M 'main'
     - Command : git push -u origin main
 
-    ^ ii) REMOTE (github) to LOCAL (vs code)
+    & ii) REMOTE (github) to LOCAL (vs code)
     - Create a repo.
     - Command : git clone <that_repo_link>
     - Make few changes.
     - Command : git add <filename>
     - Command : git commit -m "<commit_msg>"
     - Command : git push -u origin main
+
+? ----------------------------------------------------------------------------------------------------------
+
+^ 3. Interesting Commands : 
+^ _________________________
+
+→ Commad : git log - to see all previous commits
+
+---------------------------------------------------------------------------------------------------------
