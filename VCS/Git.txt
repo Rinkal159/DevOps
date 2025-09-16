@@ -82,6 +82,24 @@
 
 ? ----------------------------------------------------------------------------------------------------------
 
+^ Merge conflict :
+^ ________________
+
+→ Merge conflict araise when two or more branches make changes on same line and wants to merge their code.
+→ Git is in confusion state, is not able to think which branch's change should append to the requested branch.
+
+→ I can think two scenarios of merge conflicts right now :
+
+    1. We made changes in 'main' branch and as well as 'demo1' branch, and wants to merge 'demo1' changes to the 'main' branch, but 'main' branch has already content on that line, so this is now called a merge conflict.
+
+    2. We made changes in 'demo1' branch and 'demo2' branch at the same time and on the same line, and first merged chnages of 'demo1' branch to 'main' branch and now we are trying to merge 'demo2' to 'main' but the problem is, 'main' is already merged with 'demo1' branch which has same content on that line, so now this is also called a merge conflict.
+
+→ RESOLVE :
+    → Resolve merge conflict in merge editor provided by vs code, where HEAD shows current branch's content and other content is from another branch.
+    → Accept the branch you want to append changes to requested branch or there is also an option to append both branch changes.
+
+? ----------------------------------------------------------------------------------------------------------
+
 ^ 3. Interesting Commands : 
 ^ _________________________
 
