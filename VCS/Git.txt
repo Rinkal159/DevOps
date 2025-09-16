@@ -50,6 +50,36 @@
 → git branch -d <branch_name> : 
     to delete a branch
 
+→ git push --set-upstream origin <new_branch_name> :
+    at the time of publishing new branch, this gets helpful. Now if we want to push that branch all the time after that command, we can just write 'git push' instead of writing every time 'git push origin <new_branch_name>' 
+
+→→→ 'Content of the new branch depends on from which branch, the new branch is created' meaning if we create demo2 branch from main branch which does not have demo1 file then in demo2 branch, demo1 file will also be not displayed but if we create demo2 branch from demo1 branch which has demo1 file then demo2 branch has also demo1's content as well as main content.
+
+? ----------------------------------------------------------------------------------------------------------
+
+^ Pull Request :
+^ ______________
+
+→ Pull request is used to merge the changes made in other branches to the main branch.
+→ demo1 branch has Demo1.txt file, main branch has not, because demo1 changes have not been merged to the main branch since PR is not raised, if we merge then all the demo1 branch content will be displayed on main branch.
+
+    ^ Ways to raise PR :
+
+    & i) From Github :
+    → There, in the pull request section, we can compare 2 files.
+    → Base branch is the 'main' branch and Compare branch will be that branch whose changes will append in the 'main' branch.(here 'main' branch does not mean 'main' branch, in this context, 'main' branch can be anything i.e. 'demo1' or 'supreme', etc.)
+    → If there is not merge conflicts, then changes will smoothly apply to 'main' branch.
+
+    →→→ NOTE : Here, Changes are merged in remote, in local setup, our 'main' branch is still behind by remote commits because merge is happned remotely, so if we want to stay updated then 'git pull' command will call all remote changes meaning now main has all demo1 content.
+
+    & ii) From terminal :
+    → First checkout to branch we want to append other branch's changes. meaning 'base' branch
+    → There, write command : git merge <branch_name_whose_changes_will_append> 
+    → After writing this command, VIM editor will open, there, commit message will be already written, if you want to rewrite it then you can, otherwise press 'esc' key to leave INSERT mode then write ':wq' to exit the editor.
+    → Changes will be displayed on 'main' branch.
+
+    →→→ NOTE : Here, Changes are merged in local setup, in remote, our 'main' branch is still behind by local changes because merge is happned locally, so if we want to stay updated in remote then 'git push' command will call all local changes in remote meaning now in github, 'main' has all demo1 content.
+
 ? ----------------------------------------------------------------------------------------------------------
 
 ^ 3. Interesting Commands : 
