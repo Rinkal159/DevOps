@@ -105,7 +105,44 @@
 ^ 3. Interesting Commands : 
 ^ _________________________
 
-→ git log : to see all previous commits
+→ git log : 
+    - to see all previous commits
+
+→ git revert --soft HEAD~1 : 
+    - For 'unpushed' code.
+    - Only deletes previous commit.
+    - The file is still staged. 
+    - Changes are remain 'same'.
+
+→ git revert --mixed HEAD~1 : 
+    - For 'unpushed' code.
+    - Deletes previous commit.
+    - Unstage the file ('git add' will be written again to stage)
+    - Changes are remain 'same'.
+
+→ git revert --hard HEAD~1 : 
+    - For 'unpushed' code.
+    - Deletes previous commit.
+    - Unstages the file and
+    - 'Deletes changes'.
+
+→ git reset HEAD :
+    - For 'pushed' code.
+    - It does't remove commits from github instead add one more commit of reverting situation. 
+    - what it does, it just go back, remove previous change and add a commit.
+    - after reveting, write 'git push'.
+
+→ git stash :
+    - If you are in the middle of the code, and you want to store some of that code, neither wanted to commit nor push, then you can stash that code and move ahead on different code. 
+    - When you sound appropriate to introduce that code again, just call it via stash list or pop it.
+
+    - git stash : stashes the staged-unstaged code.
+    - git stash list : shows all stash.
+    - git stash apply stash@{<stash_list_number>} : Applies the stash but keep it in the stash list.
+    - git stash apply : Applies latest stash but keep it in the stash list.
+    - git stash pop : Appplies latest stash and deletes it from the stash list
+    - git stash clear : deletes all the stash code.
+    - git stash drop stash@{<stash_list_number} : deletes a particular stash from the stash list.
 
 ? ----------------------------------------------------------------------------------------------------------
 
