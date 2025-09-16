@@ -98,6 +98,8 @@
     → Resolve merge conflict in merge editor provided by vs code, where HEAD shows current branch's content and other content is from another branch.
     → Accept the branch you want to append changes to requested branch or there is also an option to append both branch changes.
 
+→ After resolving conflict, must commit a message then push the code.
+
 ? ----------------------------------------------------------------------------------------------------------
 
 ^ 3. Interesting Commands : 
