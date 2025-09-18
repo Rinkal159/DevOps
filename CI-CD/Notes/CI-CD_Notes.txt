@@ -1,0 +1,88 @@
+* CI : Continuous Integration
+* CD : Continuous Delievery (Deployement)
+
+^ → Concept :
+    → Instead of writing 'npm test' every time after changing code, we can make it automatic after every push/pull/merge/issue/etc...
+    → It doesn't mean we are not going to write test cases.
+    → test cases are must, but CI detects them and run it in an automatic fashion.
+
+^ How CI will work?
+    → CI means we are not obligated to run 'npm test' or test manually after some other person or even you add a new feature or mistakenly introduce a bug, CI will automatically trace it and run it. if the test fails, it notifies too.
+    → Gthub Actions is a popular tool to create a CI pipeline.
+    → All we need to understand YML because the test code is written in YML.
+
+^ YML : (Keywords)
+
+    - name → Name of the workflow (appears in GitHub Actions tab).
+
+    - on → Events that trigger the workflow (push, pull_request, workflow_dispatch, etc.).
+
+    - jobs → Defines what tasks (jobs) the workflow will run.
+
+    - strategy → Define matrix builds (e.g., run against multiple Node.js versions).
+
+    & Inside jobs:
+
+    - runs-on → The virtual machine environment (e.g., ubuntu-latest, windows-latest, macos-latest).
+
+    - steps → Sequence of tasks inside a job.
+
+    - needs → Defines dependencies between jobs.
+
+    - defaults → Set default options (like working-directory).
+
+    - if → Conditional execution (if: github.ref == 'refs/heads/main').
+
+    & Inside steps:
+
+    - name → Human-readable name of the step.
+
+    - uses → Reuse existing actions (e.g., actions/checkout@v4).
+
+    - run → Run shell commands (bash, PowerShell, etc.).
+
+    - with → Input parameters for an action.
+
+    - env → Environment variables for a step.
+
+^ Github actions are known as workflows.
+^ YML file must be the root file in github repo. Meaning must not saved in some directories instead saved in the root.
+^ If the intended testing code is inside another directory then in 'working-directory' under 'defaults', we can define the directory name where the testing code is.
+
+^ Workflow example : 
+
+    name: Node.js CI
+
+    on:
+        push:
+            branches: [ "main" ]
+        pull_request:
+            branches: [ "main" ]
+        workflow_dispatch:   # allows manual trigger
+
+    jobs:
+        build:
+            runs-on: ubuntu-latest
+        env:
+            NODE_ENV: test
+
+        defaults:
+            run:
+            working-directory: CI-CD   # when the intended testing code is in another directory
+
+        steps:
+            - name: Checkout repo
+                uses: actions/checkout@v4
+
+            - name: Setup Node.js
+                uses: actions/setup-node@v4
+                with:
+                    node-version: 22.x
+                    cache: 'npm'
+                    cache-dependency-path: CI-CD/package-lock.json
+
+            - name: Install dependencies
+                run: npm ci
+
+            - name: Run tests
+                run: npm test
