@@ -1,6 +1,3 @@
 export default {
-    testEnvironment: "node",
-    tranform: {
-
-    }
+    testEnvironment: "node"
 }
