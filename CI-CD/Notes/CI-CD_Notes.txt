@@ -45,6 +45,8 @@
 
     - env → Environment variables for a step.
 
+* 'two' whietspaces if the new line of code is nested.
+
 ^ Github actions are known as workflows.
 ^ YML file must be the root file in github repo. Meaning must not saved in some directories instead saved in the root.
 ^ If the intended testing code is inside another directory then in 'working-directory' under 'defaults', we can define the directory name where the testing code is.
@@ -54,35 +56,35 @@
     name: Node.js CI
 
     on:
-        push:
-            branches: [ "main" ]
-        pull_request:
-            branches: [ "main" ]
-        workflow_dispatch:   # allows manual trigger
+      push:
+        branches: [ "main" ]
+      pull_request:
+        branches: [ "main" ]
+      workflow_dispatch:   # allows manual trigger
 
     jobs:
-        build:
-            runs-on: ubuntu-latest
-        env:
-            NODE_ENV: test
+      build:
+        runs-on: ubuntu-latest
+      env:
+        NODE_ENV: test
 
-        defaults:
-            run:
-            working-directory: CI-CD   # when the intended testing code is in another directory
+      defaults:
+        run:
+          working-directory: CI-CD   # when the intended testing code is in another directory
 
-        steps:
-            - name: Checkout repo
-                uses: actions/checkout@v4
+      steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-            - name: Setup Node.js
-                uses: actions/setup-node@v4
-                with:
-                    node-version: 22.x
-                    cache: 'npm'
-                    cache-dependency-path: CI-CD/package-lock.json
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+          cache-dependency-path: CI-CD/package-lock.json
 
-            - name: Install dependencies
-                run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Run tests
-                run: npm test
+      - name: Run tests
+        run: npm test
