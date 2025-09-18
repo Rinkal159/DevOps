@@ -1,0 +1,28 @@
+name: Check truthy-falsy values
+
+on:
+    push:
+        branches: [" main "]
+
+jobs:
+    build:
+        
+        runs-on: ubuntu-latest
+
+        defaults:
+            run:
+                working-directory: Practice-CI
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Setup repo
+              uses: actions/setup-node@v4
+              with: 
+                node-version: 22.x
+                cache: 'npm'
+                cache-dependency-path: CI-CD/package-lock.json
+
+            - run: npm ci
+            - run: npm test
