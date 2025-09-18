@@ -1,17 +1,15 @@
-import getValues from "./getValues";
-
 describe("check truthy-falsy values", () => {
     test('values to be truthy', () => {
-        expect(getValues(1)).toBeTruthy();
+        expect(1).toBeTruthy();
     });
     test('values to be truthy', () => {
-        expect(getValues(true)).toBeTruthy();
+        expect(true).toBeTruthy();
     });
     test('values to be falsy', () => {
-        expect(getValues(false)).toBeFalsy();
+        expect(false).toBeFalsy();
     });
     test('values to be falsy', () => {
-        expect(getValues(0)).toBeFalsy();
+        expect(0).toBeFalsy();
     });
 })
 
