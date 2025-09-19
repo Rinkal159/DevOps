@@ -1,0 +1,24 @@
+*** Docker 
+*** ------
+
+→ Docker provides 'consistency' across multiple environments and operating systems.
+→ Two major concepts in Docker :
+
+^ 1. Images :
+    - Image is like a class or a recipe of a dish. It is a blueprint for containers.
+    - Built from a Dockerfile.
+^ 2. Containers :
+    - Containers is like an object, a runnable instance of image.
+    - We can run multiple containers from single imaage.
+
+More...
+
+^ 3. Dockerfile :
+    - Instruction to build a docker image.
+^ 4. Docker Hub/Registery :
+    - Store and share images.
+    - DockerHub for Docker is like GitHub for Git.
+^ 5. Volumes :
+    - Persistent data storage for containers.
+^ 6. Networks :
+    - Cpmmunication between containers.
