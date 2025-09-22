@@ -21,4 +21,62 @@ More...
 ^ 5. Volumes :
     - Persistent data storage for containers.
 ^ 6. Networks :
-    - Cpmmunication between containers.
+    - Communication between containers.
+
+
+* DOCKERFILE : (Example)
+* ______________________
+
+FROM node
+LABEL maintainer='rinkal singapuri'
+LABEL version='1.0'
+ENV port=3000
+
+WORKDIR / app
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+EXPOSE 8298
+CMD ["npm", "run", "dev"]
+
+^ Explanation :
+
+    → FROM :
+        It specifies the base image.
+        basically how the image built (here, from node)
+    
+    → LABEL :
+        Information about the image like who's the maintainer, what's the version.
+
+    → ENV :
+        Sets environment variables.
+
+    → WORKDIR :
+        It create 'app' folder inside the container.
+        WORKDIR / app doesn't mean that we should have the main directory named as app, but it will build app directory in the container where all the code goes from here.
+        It means that inside the container, work inside /app.
+
+    → COPY package*.json ./ :
+        It will copy package.json and package-lock.json from the current directory.
+
+    → RUN npm install :
+        Install dependencies into /app/node_modules
+
+    → COPY . . :
+        Copy rest of the all code.
+
+    → EXPOSE :
+        port number. (just for the documentation)
+
+    → CMD :
+        run commands.
+
+
+* COMMANDS 
+* ________
+
+1. To rename a docker container :
+    docker rename <old_container_name> <new_container_name>
+
+2. 
