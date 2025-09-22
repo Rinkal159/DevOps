@@ -1,7 +1,7 @@
 export default function App() {
   return (
     <div>
-      <h1>FIRST REACT DOCKER IMAGE</h1>
+      <h1>FIRST REACT IMAGE</h1>
     </div>
   )
 }
