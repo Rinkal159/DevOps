@@ -42,41 +42,68 @@ CMD ["npm", "run", "dev"]
 
 ^ Explanation :
 
-    → FROM :
-        It specifies the base image.
-        basically how the image built (here, from node)
+    1. FROM :
+        → It specifies the base image.
+        → basically how the image built (here, from node)
     
-    → LABEL :
-        Information about the image like who's the maintainer, what's the version.
+    2. LABEL :
+        → Information about the image like who's the maintainer, what's the version.
 
-    → ENV :
-        Sets environment variables.
+    3. ENV :
+        → Sets environment variables.
 
-    → WORKDIR :
-        It create 'app' folder inside the container.
-        WORKDIR / app doesn't mean that we should have the main directory named as app, but it will build app directory in the container where all the code goes from here.
-        It means that inside the container, work inside /app.
+    4. WORKDIR :
+        → It create 'app' folder inside the container.
+        → WORKDIR / app doesn't mean that we should have the main directory named as app, but it will build app directory in the container where all the code goes from here.
+        → It means that inside the container, work inside /app.
 
-    → COPY package*.json ./ :
-        It will copy package.json and package-lock.json from the current directory.
+    5. COPY package*.json ./ :
+        → It will copy package.json and package-lock.json from the current directory.
 
-    → RUN npm install :
-        Install dependencies into /app/node_modules
+    6. RUN npm install :
+        → Install dependencies into /app/node_modules
 
-    → COPY . . :
-        Copy rest of the all code.
+    7. COPY . . :
+        → Copy rest of the all code.
 
-    → EXPOSE :
-        port number. (just for the documentation)
+    8. EXPOSE :
+        → port number. (just for the documentation)
 
-    → CMD :
-        run commands.
+    9. CMD :
+        → run commands.
 
 
 * COMMANDS 
 * ________
 
-1. To rename a docker container :
-    docker rename <old_container_name> <new_container_name>
+1. docker run -t <image_name>
+    → To craete an image
 
-2. 
+2. docker run -p <port_number>:<port_number> <image_name> :
+    → To run docker image
+
+    → first port number is for host machine, and second is for container.
+    → port number is specified twice because container has its own isolated network. App inside the container might run on 5173, but the host machine(your laptop) also need to know where to forward requests. 
+
+3. docker rename <old_container_name> <new_container_name> :
+    → To rename a docker container
+    
+4. docker stop <first_three_digits_of_container_ID> :
+    → To stop a container from running
+
+5. docker container prune :
+    → To delete all stopped containers
+
+6. docker ps :
+    → To see all 'active' containers
+
+7. docker ps -a :
+    → To see all containers
+
+8. docker rm <first_three_digits_of_container_ID> :
+    → To remove a specific 'stopped' container
+
+9. docker rm <first_three_digits_of_container_ID> --force :
+    → To remove a specific 'active' container
+
+^ Note : Always specify port number as '5173' while creating 'react' image.
