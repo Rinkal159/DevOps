@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "Docker/react-docker",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - Docker/react-docker",
+			"detail": "vite build"
+		}
+	]
+}
