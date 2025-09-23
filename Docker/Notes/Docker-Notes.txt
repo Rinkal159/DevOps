@@ -85,6 +85,9 @@ CMD ["npm", "run", "dev"]
     → first port number is for host machine, and second is for container.
     → port number is specified twice because container has its own isolated network. App inside the container might run on 5173, but the host machine(your laptop) also need to know where to forward requests. 
 
+3. docker run -p 5173:5173 -v "$(pwd):/app" -e CHOKIDAR_USEPOLLING=true <docker_image_name> :
+    To dynamically run image meaning new changes will reflect on the page.
+
 3. docker rename <old_container_name> <new_container_name> :
     → To rename a docker container
     
@@ -107,3 +110,33 @@ CMD ["npm", "run", "dev"]
     → To remove a specific 'active' container
 
 ^ Note : Always specify port number as '5173' while creating 'react' image.
+
+* DOCKER-COMPOSE
+* ______________
+
+→ Docker compose allows you to run multicontainer applications in just one go using 'docker compose up' command on terminal.
+→ it is written in YMAL file.
+
+^ Example:
+
+For running the frontend dynamically meaning new changes will reflect on the page.
+
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - 5173:5173
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: sh -c "npm install && npm run dev"
+
+here in 'command', 
+    → sh -c means start a shell inside container to run quoted string, basically useful when && like conditions are specified.
+    → np  install will install dependencies
+    → && ensures 'npm run dev' executes only after 'npm install' completes successfully.
+    → 'npm run dev' will run the page.
