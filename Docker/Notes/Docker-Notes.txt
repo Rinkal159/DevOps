@@ -140,3 +140,51 @@ here in 'command',
     → np  install will install dependencies
     → && ensures 'npm run dev' executes only after 'npm install' completes successfully.
     → 'npm run dev' will run the page.
+
+^ Difference between image and build in Dockerfile:
+→ 'image' :- already build image (from docker hub or local system)
+    Example:
+
+    services:
+      db:
+        image: mynosql:latest
+
+→ 'build' :- will build a custom image from a Dockerfile
+    Example:
+
+    services:
+      web:
+        build:
+          - context: .
+          - dockerfile: Dockerfile
+    
+    here,
+    'context' is the directory that contains the source code of dockerfile and 'dockerfile' specifies the name of dockerfile.
+
+
+* DOCKER COMPOSE WATCH
+* ____________________
+
+→ It let's you allow reflect changes on the page, it makes the page dynamic.
+
+^ Example:
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 5173:5173
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: package.json
+          target: /app/package.json
+
+    → Same as docker compose, but here wo define develop and remove working_dir, volumes and environment.
+    → action means what to do and path means on which change (on which location the changes will happen) and target means, in the container, where the changes will sync, rebuild or restart.
+    → in the summery, 'what to do' (action) 'on which change' (path) and 'where to apply' (target)
