@@ -1,7 +1,7 @@
 FROM node
 LABEL maintainer='rinkal singapuri'
 
-WORKDIR / app
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
